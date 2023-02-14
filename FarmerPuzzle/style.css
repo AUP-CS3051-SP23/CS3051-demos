@@ -5,6 +5,10 @@
     font-size: 0;
 }
 
+#instructions {
+    width: 90vw
+}
+
 #west {
     position: absolute;
     width: 30%;
