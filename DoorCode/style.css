@@ -1,0 +1,9 @@
+img {
+    height: 100px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+button:active {
+    background-color: #BFB;
+    color: black;
+}
