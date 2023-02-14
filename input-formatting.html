@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>MY TITLE</title>
+    <style>
+        #result {
+            margin-top: 1em;
+        }
+        div {
+            margin-top: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="choices">
+        Enter your information?
+        <br>
+        <input type="radio" id="us" name="input" value="us">  <!-- name ties the inputs together -->
+            <label for="us">US Phone Number</label><br>
+        <input type="radio" id="fr" name="input" value="fr">  <!-- don't really need the value... can use the id if you want -->
+            <label for="fr">French phone number</label><br>
+        <input type="radio" id="ss" name="input" value="ss">
+            <label for="ss">Social Security Number</label><br>
+    </div>
+    <div id="enter">
+        <label id="number-label" for="number"></label>
+        <input type="text" id="number"><br>
+        <button onclick="showResult()">Enter</button>
+    </div>
+
+    <div id="result"></div>
+
+
+    <script>
+
+        const choices = document.querySelectorAll("#choices input");
+        for (let i=0; i<choices.length; i++) {
+            choices[i].addEventListener("click", setUpEntry);
+        }
+
+        function setUpEntry(event) {
+            const nl = document.querySelector("#number-label");
+            const n = document.querySelector("#number");
+            const t = event.target;
+            switch (t.value) {
+                case "us":
+                    nl.innerHTML = "US Phone Number";
+                    n.placeholder = "(xxx) xxx-xxxx";
+                    n.removeEventListener("keydown", formatSS);
+                    break;
+                case "fr":
+                    nl.innerHTML = "French Phone Number";
+                    n.placeholder = "xx.xx.xx.xx";
+                    n.removeEventListener("keydown", formatSS);
+                    break;
+                case "ss":
+                    nl.innerHTML = "US Social Security Number";
+                    n.placeholder = "xxx-xx-xxxx";
+                    n.addEventListener("keydown", formatSS);
+                    break;
+            }
+        }
+
+        function showResult() {
+            const r = document.querySelector("#result");
+            const n = document.querySelector("#number");
+            const rbs = document.querySelectorAll("#choices input");
+            for (let i=0; i<rbs.length; i++) {
+                if (rbs[i].checked) {
+                    let s = n.value;
+                    switch (rbs[i].value) {
+                        case "us":
+                        r.innerHTML = "US tel: " +
+                                `(${s.slice(0,3)}) ${s.slice(3,6)}-${s.slice(6-10)}`;
+                            break;
+                        case "fr":
+                            r.innerHTML = "FR tel: " +
+                                `${s.slice(0,2)}.${s.slice(2,4)}.${s.slice(4,6)}.${s.slice(6,8)}`;
+                            break;
+                        case "ss":
+                            // r.innerHTML = "US SS: " +
+                            //     `${s.slice(0,3)}-${s.slice(3,5)}-${s.slice(5,9)}`;
+                            r.innerHTML = "US SS: " + s;
+                            break;
+                    }
+                    break; // break out of the for loop
+                }
+            }
+        }
+
+        function formatSS(event) {
+            if (event.key == "Enter" || event.key == "Backspace" || event.key == "Delete") {
+                return;
+            }
+            event.preventDefault();
+            let t = event.target;
+            if (t.value.length > 10) {
+                return;
+            }
+            t.value += event.key;
+            
+            if (t.value.length == 3 || t.value.length == 6) {
+                t.value += "-";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

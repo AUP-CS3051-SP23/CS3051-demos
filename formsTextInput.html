@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>MY TITLE</title>
+    <style>
+        #result {
+            margin-top: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" placeholder="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" placeholder="Doe"><br><br>
+    <button onclick="showNames()">Submit</button>
+
+    <div id="result"></div>
+
+
+    <script>
+        function showNames() {
+            const fn = document.querySelector("#fname");
+            const ln = document.querySelector("#lname");
+            const r = document.querySelector("#result")
+            r.innerHTML = `Hello ${fn.value} ${ln.value}`;
+
+            // ln.value = ln.value.toUpperCase();
+        }
+
+        /**
+        function changeInput(event) {
+            const ln = document.querySelector("#lname");
+            ln.value = (ln.value + event.key).toUpperCase();
+        }
+        document.querySelector("#lname").addEventListener("change", changeInput);
+        **/
+
+        // ln.value = ln.value.toUpperCase();
+
+        /**
+        document.querySelector("#lname").addEventListener("keydown", changeInput);
+        if (event.key == "Enter" || event.key == "Backspace" || event.key == "Delete") {
+            return;
+        }
+        event.preventDefault();
+        **/
+
+        /**
+        window.addEventListener("beforeunload", function(event) {
+            event.returnValue = false;
+        });
+        **/
+
+    </script>
+</body>
+
+</html>

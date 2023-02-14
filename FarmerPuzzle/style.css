@@ -1,0 +1,58 @@
+#puzzle {
+    position: relative;
+    width: 90vw;
+    height: 60vh;
+    font-size: 0;
+}
+
+#west {
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    left: 0;
+    background-color: sandybrown;
+    display: inline-block;
+}
+
+#river {
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    left: 30%;
+    background-color: blue;
+    display: inline-block;
+}
+
+#east {
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    left: 70%;
+    background-color: burlywood;
+    display: inline-block;
+}
+
+.passenger {
+    width: 10vw;
+}
+
+#boat {
+    position: absolute;
+    width: 20vw;
+    bottom: 0;
+    left: 0%;
+}
+
+.bigobject {
+    width: 12vw;
+}
+
+#message {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: red;
+}

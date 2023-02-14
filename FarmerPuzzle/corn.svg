@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Слой_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 214.5 121"
+	 enable-background="new 0 0 214.5 121" xml:space="preserve">
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  bottomLeftOrigin="true" height="1342.8" width="2506.5" x="-6061.1" y="-5858.7"></sliceSourceBounds>
+		<optimizationSettings>
+			<targetSettings  fileFormat="PNG8Format" targetSettingsID="0">
+				
+					<PNG8Format  autoReduce="false" ditherAlgorithm="diffusion" ditherPercent="88" interlaced="false" matteColor="#FFFFFF" noMatteColor="false" numColors="256" reductionAlgorithm="selective" rolloverMasterPalette="false" transparency="false" webShiftPercent="0">
+					<colorTable  isExact="false"></colorTable>
+					<lockedColors></lockedColors>
+					<colorShiftEntries></colorShiftEntries>
+				</PNG8Format>
+			</targetSettings>
+		</optimizationSettings>
+	</sfw>
+</metadata>
+<g>
+	
+		<path fill="#A86054" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M16.9,93.7c0.5,2.8,14,0,32.6,4.2c9.7,2.2,18.3,4.1,26.9,10.7c7.1,5.4,12.4,12.5,14.7,11.2c1.7-1-0.5-5.1,1.9-8.9
+		c2.4-3.8,7.7-4.6,10.4-4.9c15.8-1.8,35.1,1.7,48.7,0.9c19.1-1.1,49.7-15.9,54.5-13.7c0.7,0.3,1.4,0.7,1.4,0.7
+		c3.7,2.1,5.3,4.8,5.5,4.7c0.4-0.2-5.4-15.5-15.3-26c-15.6-16.4-38-17.2-64.4-18.1c-36.9-1.3-74.9,7.7-84.5,20.3
+		C47.6,77,44.4,82.5,37.8,85c-4.4,1.6-7.6,0.9-13.6,3.6C22.1,89.5,16.6,92,16.9,93.7z"/>
+	
+		<path fill="#534741" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M37.8,85c4.3,0.5,9,1.3,14,2.5c8,2,14.9,4.6,20.5,7.1"/>
+	
+		<path fill="#534741" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M93,111c-1.8-2.6-4.9-6.5-9.9-9.5c-2.1-1.3-4.2-2.2-6-2.8"/>
+	
+		<path fill="#B56D5D" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M10.6,72.2c0.5,2.8,14,0,32.6,4.2c9.7,2.2,18.3,4.1,26.9,10.7c7.1,5.4,12.4,12.5,14.7,11.2c1.7-1-0.5-5.1,1.9-8.9
+		c2.4-3.8,7.7-4.6,10.4-4.9c15.8-1.8,35.1,1.7,48.7,0.9c19.1-1.1,49.7-15.9,54.5-13.7c0.7,0.3,1.4,0.7,1.4,0.7
+		c3.7,2.1,5.3,4.8,5.5,4.7c0.4-0.2-5.4-15.5-15.3-26c-15.6-16.4-38-17.2-64.4-18.1C90.6,31.7,52.6,40.7,43,53.3
+		c-1.6,2.2-4.9,7.7-11.5,10.1c-4.4,1.6-7.6,0.9-13.6,3.6C15.8,68,10.3,70.4,10.6,72.2z"/>
+	
+		<path fill="#534741" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M31.5,63.4c4.3,0.5,9,1.3,14,2.5c8,2,14.9,4.6,20.5,7.1"/>
+	
+		<path fill="#C17C67" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M1,40.3c0.5,2.8,14,0,32.6,4.2c9.7,2.2,18.3,4.1,26.9,10.7c7.1,5.4,12.4,12.5,14.7,11.2c1.7-1-0.5-5.1,1.9-8.9
+		c2.4-3.8,7.7-4.6,10.4-4.9c15.8-1.8,35.1,1.7,48.7,0.9c19.1-1.1,49.7-15.9,54.5-13.7c0.7,0.3,1.4,0.7,1.4,0.7
+		c3.7,2.1,5.3,4.8,5.5,4.7c0.4-0.2-5.4-15.5-15.3-26C166.6,2.8,144.3,2,117.8,1.1C80.9-0.2,42.9,8.9,33.4,21.4
+		c-1.6,2.2-4.9,7.7-11.5,10.1c-4.4,1.6-7.6,0.9-13.6,3.6C6.1,36.1,0.7,38.5,1,40.3z"/>
+	
+		<path fill="#534741" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M77.1,57.5c-1.8-2.6-4.9-6.5-9.9-9.5c-2.1-1.3-4.2-2.2-6-2.8"/>
+</g>
+</svg>

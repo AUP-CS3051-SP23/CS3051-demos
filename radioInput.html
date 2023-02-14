@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>MY TITLE</title>
+    <style>
+        #result {
+            margin-top: 1em;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="choices">
+        What size would you like?
+        <br>
+        <input type="radio" id="small" name="size" value="S">  <!-- name ties the inputs together -->
+            <label for="small">Small</label><br>
+        <input type="radio" id="medium" name="size" value="M">
+            <label for="medium">Medium</label><br>
+        <input type="radio" id="large" name="size" value="L">
+            <label for="large">Large</label><br>
+    </div>
+
+    <div id="result"></div>
+
+
+    <script>
+
+        const choices = document.querySelectorAll("#choices input");
+        for (let i=0; i<choices.length; i++) {
+            choices[i].addEventListener("click", showRadio);
+        }
+
+        function showRadio(event) {
+            const r = document.querySelector("#result");
+            const t = event.target;
+            switch (t.value) {
+                case "S":
+                    r.style.width = "100px";
+                    r.style.height = "100px";
+                    break;
+                case "M":
+                    r.style.width = "200px";
+                    r.style.height = "200px";
+                    break;
+                case "L":
+                    r.style.width = "300px";
+                    r.style.height = "300px";
+                    break;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
