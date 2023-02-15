@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+    This shows several ways of accessing form elements taken from
+    https://developer.mozilla.org/en-US/docs/Web/API/Document/forms
+    and
+    https://www.w3schools.com/jsref/coll_doc_forms.asp
+ -->
+<html>
+
+<body>
+
+    <h1>The Document Object</h1>
+    <h2>The forms Property</h2>
+
+    <p>
+    <form id="myname">
+        My name: <input type="text" name="fname" value="Bill">
+    </form>
+    </p>
+
+    <p>
+    <form name="mycity">
+        My city: <input type="text" name="city" value="Paris">
+    </form>
+    </p>
+
+    <p id="result"></p>
+
+    <script>
+        let v;
+
+        v = document.forms.namedItem("myname").elements.fname.value;
+        document.getElementById("result").innerHTML = v;
+
+        v = document.forms.namedItem("myname").fname.value; // without the .elements
+        document.getElementById("result").innerHTML += "<br>" + v;
+
+        v = document.forms["myname"].fname.value;  // namedItem is the same as [] or as .item()
+        document.getElementById("result").innerHTML += "<br>" + v;
+
+        v = document.forms.myname.elements.fname.value;
+        document.getElementById("result").innerHTML += "<br>" + v;
+
+        v = document.forms.myname.fname.value; // without the .elements
+        document.getElementById("result").innerHTML += "<br>" + v;
+
+        v = document.forms.namedItem("mycity").city.value;
+        document.getElementById("result").innerHTML += "<br>" + v;
+
+        v = document.forms.mycity.city.value;
+        document.getElementById("result").innerHTML += "<br>" + v;
+</script>
+
+</body>
+
+</html>
