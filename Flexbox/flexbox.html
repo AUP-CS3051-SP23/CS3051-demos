@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Flexbox</title>
+    <style>
+        .box {
+            background-color: yellow;
+            margin: 10px;
+            border: solid black 1px;
+            display: inline-block;
+        }
+
+        .container {
+            width: 100%;
+            height: 170px;
+            border: solid black 1px;
+            resize: both;
+            overflow: auto;
+        }
+
+        #flex-container {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Flow with centered flex shows difference between flow with and without flexbox -->
+    No flex<br>
+    <div id="no-flex" class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+    </div>
+    Flex<br>
+    <div id="flex-container" class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+    </div>
+    <script>
+        let boxes = document.querySelectorAll(".box");
+        for (let i = 0; i < boxes.length; i++) {
+            boxes[i].style.width = (i*5 + 100)+"px";
+            boxes[i].style.height = (i*5 + 100)+"px";
+        }
+
+    </script>
+</body>
+
+</html>

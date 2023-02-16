@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Positioning</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            margin: 10px;
+            border: solid black 1px;
+            display: inline-block;
+        }
+
+        .container {
+            position: relative;
+            border: solid black 1px;
+            resize: both;
+            overflow: auto;
+            margin: 30px;
+        }
+
+        /* edit out the - in the selectors below to see how the positions work */
+
+        #-box2 {
+            position: relative;
+            top: 20px;
+            left: 20px;
+        }
+
+        #-box3 {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        #-box6 {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        #-box7 {
+            position: sticky;
+            bottom: 10px;
+        }
+
+        #-box1 {
+            position: sticky;
+            top: 5px;
+            left: 10px;
+        }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="box1" class="box">Box 1</div>
+        <div id="box2" class="box">Box 2 relative</div>
+        <div id="box3" class="box">Box 3 absolute</div>
+        <div id="box4" class="box">Box 4</div>
+        <div id="box5" class="box">Box 5</div>
+        <div id="box6" class="box">Box 6 fixed</div>
+        <div id="box7" class="box">Box 7 sticky</div>
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>
