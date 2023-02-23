@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Grid</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 4fr 1fr;
+            grid-template-rows: 1fr 4fr 1fr;
+            grid-template-areas:
+                "header header header"
+                "leftside content rightside"
+                "leftside footer rightside";
+            column-gap: 3px;
+            row-gap: 3px;
+            height: 100vh;
+            /* justify-items: center; */
+            /* align-items: stretch; */
+            /* justify-content: end; */
+
+            border: grey 1px solid;
+            resize: both;
+            overflow: auto;
+            height: 100vh;
+        }
+
+        #header {
+            grid-area: header;
+            background-color: #f7bcbc;
+            display: flex;
+            justify-content: center;
+        }
+
+        #leftside {
+            grid-area: leftside;
+            background-color: #d5f7bc;
+        }
+
+        #rightside {
+            grid-area: rightside;
+            background-color: #bcf7e3;
+        }
+
+        #content {
+            grid-area: content;
+            background-color: #bcf7f7;
+        }
+
+        #footer {
+            grid-area: footer;
+            background-color: #f7f7bc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="header">
+            This is the header
+        </div>
+
+        <div id="leftside">
+            This is the left side
+        </div>
+
+        <div id="rightside">
+            This is the right side
+        </div>
+
+        <div id="content">
+            This is the content
+        </div>
+
+        <div id="footer">
+            copyright david sturman 2023
+        </div>
+    </div>
+
+
+    <script>
+
+    </script>
+</body>
+
+</html>
