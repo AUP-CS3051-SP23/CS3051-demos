@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Grid</title>
+    <style>
+        :root {
+            --my-color: #7f2424;
+        }
+        #container {
+            display: grid;
+            grid-template-columns: calc( 5em + 5px ) 1fr 100px;
+            grid-template-rows: 4em 1fr 2em;
+            grid-template-areas:
+                "g-header g-header g-header"
+                "g-left g-content g-right"
+                "g-left g-footer g-right";
+            justify-items: center;
+            align-items: center;
+
+            border: black solid 1px;
+            resize: both;
+            overflow: auto;
+            column-gap: 10px;
+            row-gap: 10px;
+            height: 90vh;
+            font-size: 20px;
+        }
+
+        #header {
+            grid-area: g-header;
+            /* grid-column: 1 / 4;
+            grid-row: 1 / 2; */
+            background-color: var(--my-color);
+            justify-self: stretch;
+            align-self: stretch;
+        }
+
+        #left {
+            grid-area: g-left;
+            background-color: lightgreen;
+        }
+
+        #right {
+            grid-area: g-right;
+            background-color: rgb(235, 193, 247);
+        }
+
+        #content {
+            grid-area: g-content;
+            background-color: lightyellow;
+            justify-self: start;
+            align-self: center;
+        }
+
+        #footer {
+            grid-area: g-footer;
+            background-color: lightcoral;
+            background-color: var(--my-color);
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">Header</div>
+        <div id="content">
+            <div>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                </ul>
+                <p>Lorem ipsum dolor sit amet. In laborum laboriosam <strong>Non veritatis in molestias minima ut atque aspernatur</strong> id rerum distinctio. Aut excepturi quae At deserunt dicta <em>Et sapiente</em>. Hic veniam sint est recusandae rerumUt commodi. </p><p>Ex voluptas iusto rem autem illum <strong>Hic sint aut saepe quae ut itaque consequuntur qui distinctio minima</strong>. Hic soluta maiores et consequuntur dolore <em>Sit unde et harum nihil in nostrum maxime</em>. Et possimus voluptatem qui minima blanditiisaut neque quo consequatur magni. Vel vitae sunt id ratione voluptatumEt provident est sint laborum id Quis laborum vel voluptas quod. </p><ol><li>Est sapiente libero vel commodi quos et numquam delectus est laborum recusandae. </li><li>Sit explicabo atque ex repudiandae rerum est perferendis modi. </li><li>Nam iure corporis in Quis voluptate qui magnam facilis. </li></ol><p>Sed harum explicaboEst corporis eos exercitationem internos est modi quibusdam qui voluptatem fugit eos incidunt quidem. Et neque saepe <strong>Et maxime aut natus obcaecati</strong>. </p><p>Est officiis adipisci <strong>Et voluptate sed perferendis obcaecati aut velit suscipit</strong> non voluptate facilis ut aperiam facere. Et voluptatibus quidem non pariatur necessitatibus <em>Ut dolor est tenetur error qui voluptatibus quos</em>. </p><p>Qui quod delenitiSit explicabo nam quos galisum est consequatur mollitia At doloribus velit. Ut sequi incidunt <a href="https://www.loremipzum.com" target="_blank">Et illum et nihil dolor non libero dolores sit nihil numquam</a>. Eos possimus necessitatibus <em>Et dolorem ea molestiae magnam aut galisum aliquid sit minima perspiciatis</em> nam adipisci blanditiis qui tempore consequuntur. Aut consequatur autem 33 explicabo errorEa veritatis non deleniti soluta et Quis repellendus aut odit fugiat aut omnis ullam. </p>
+                <img src="../imgs/cat.jpg">
+            </div>
+        </div>
+        <div id="right">Right side</div>
+        <div id="footer">Footer</div>
+        <div id="left">This is the Left side</div>
+    </div>
+
+
+    <script>
+
+    </script>
+</body>
+
+</html>
