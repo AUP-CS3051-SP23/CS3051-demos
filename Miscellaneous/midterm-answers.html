@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<!--*****************************************
+    These are solutions to the CS3051 SP21 midterm
+    There are other ways to solve these problems,
+    so if your answers are different but work, that's fine
+    and your grade will not be affected.
+    *****************************************-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Midterm answers</title>
+    <style>
+        h3 {
+            background-color: rgb(209, 251, 209);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CS3051 SP23<br>Midterm answers</h1>
+
+    <h3>Question 1</h3>
+    HTML = HyperText Markup Language <br>
+    CSS = Cascading Style Sheets
+
+    <h3>Question 2</h3>
+    <p style="color: orange">orange</p>
+    <p style="color: #FFA500">orange</p>
+    <p style="color: rgb(255, 165, 0)">orange</p>
+    <p style="color: hsl(39, 100%, 50%)">orange</p>
+    > I also accepted answers where you just wrote
+    "color name, hex code, rgb" or something similar
+        
+    <h3>Question 3</h3>
+    <style>
+        #myid {
+            color: red;
+        }
+
+        .myclass {
+            color: green;
+        }
+    </style>
+    <p id="myid" class="myclass">This is line one</p>
+    <p id="myid" class="myclass" style="color: blue">  <!-- color = blue because inline style takes precedence over others -->
+        This is line two
+    </p>
+    > Line 1 is red because id takes precedence over class<br>
+    > Line 2 is blue because inline style takes precedence over others
+
+    <h3>Question 4</h3>
+    <style>
+        #q4 { font-size: 20px; }
+        .two { font-size: 2em; }
+        #one { font-size: 15px; }
+    </style>
+    <div id="q4">
+        <p id="one">line one (size 15 as specified in #one CSS)</p> <!-- font size = 15px -->
+        <p class="two">line two (size 40 because it is twice its parent)</p> <!-- font size = 40px -->
+        <p>line three (size 20 because it inherts the size of its parent)</p> <!-- font size = 20px -->
+    </div>
+        
+    <h3>Question 5</h3>
+    <ol id="mylist"></ol>
+    <script>
+        let ingredients = ["flour", "milk", "butter", "sugar", "eggs"];
+        let mylist = document.querySelector("#mylist");
+        for (let i = 0; i < ingredients.length; i++) {
+            let li = document.createElement("li");
+            li.innerHTML = ingredients[i];
+            mylist.appendChild(li);
+        }
+    </script>
+
+    <h3>Question 6</h3>
+    <div id="bluebox" style="width: 100px; height: 100px;"></div>
+    <script>
+        let box = document.querySelector("#bluebox");
+        box.style.backgroundColor = "lightblue";
+    </script>
+    The box didn't show up because the script was run before the box was created and
+    document.querySelector("#bluebox") returned null.
+
+    <h3>Question 7</h3>
+    Name: <input type="text" id="name"><button onclick="getname()">Get Name</button>
+    <script>
+        function getname() {
+            let name = document.querySelector("#name").value;
+            alert(name);
+        }
+    </script>
+
+    <h3>Question 8</h3>
+    <input type="radio" name="choice" value="jpg">jpg<br>
+    <input type="radio" name="choice" value="png">png<br>
+    <input type="radio" name="choice" value="gif">gif<br>
+    <button onclick="imgformat()">Choose</button>
+    <script>
+        function imgformat() {
+            let choice = document.querySelector("input[type='radio']:checked").value;
+            alert(choice);
+        }
+    </script>
+    <br>> The script didn't work because the radio buttons had different "name" values.
+
+    <h3>Question 9</h3>
+    First Name: <input type="text" id="fname"><br>
+    Last name: <input type="text" id="lname"><br>
+    City: <input type="text" id="city"><br>
+    <button onclick="setaddress()">Submit</button>
+    <script>
+        function setaddress() {
+            let first = document.querySelector("#fname").value;
+            let last = document.querySelector("#lname").value;
+            let cty = document.querySelector("#city").value;
+            let address = first + ", " + last + ", " + cty;
+            alert(address);
+        }
+    </script>
+    <br>> The script didn't work because the variables and names were all mixed up or incorrect.
+
+    <h3>Question 10</h3>
+    <style>
+        #flex-container {
+            /* PUT YOUR CSS HERE */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: end;
+            /* ***************** */
+            border: 1px solid black;
+            height: 500px;
+            background-color: #EEE;
+        }
+
+        #item1 {
+            width: 200px;
+        }
+
+        #item2 {
+            width: 100px;
+        }
+
+        #item3 {
+            width: 300px;
+        }
+
+        .box {
+            background-color: #888;
+            border: 1px solid black;
+            height: 100px;
+            margin: 20px;
+        }
+    </style>
+    <div id="flex-container">
+        <div id="item1" class="box">Item 1</div>
+        <div id="item2" class="box">Item 2</div>
+        <div id="item3" class="box">Item 3</div>
+    </div>
+
+    <h3>Question 11</h3>
+    <style>
+        #my5x4grid {
+            /* PUT YOUR CSS HERE */
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            /* ***************** */
+            height: 100px;
+            background-color: #EEE;
+            border: 1px solid black;
+            overflow: auto;
+            resize: both;
+        }
+    </style>
+    <div id="my5x4grid"></div>
+
+    <h3>Extra credit</h3>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            height: 10px;
+            width: 10px
+        }
+        .black {
+            background-color: grey;
+        }
+    </style>
+
+    <table id="mytable"></table>
+    <script>
+        const n = 3;
+        const m = 4;
+        for (let r = 0; r < n; r++) {
+            let tr = document.createElement("tr");
+            for (let c = 0; c < m; c++) {
+                let td = document.createElement("td");
+                if ((r + c) % 2 == 0) {
+                    td.classList.add("black");
+                }
+                tr.appendChild(td);
+            }
+            document.querySelector("#mytable").appendChild(tr);
+        }
+    </script>
+
+</body>
+
+</html>
