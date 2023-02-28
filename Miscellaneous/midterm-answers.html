@@ -36,7 +36,7 @@
         
     <h3>Question 3</h3>
     <style>
-        #myid {
+        #myid1 {
             color: red;
         }
 
@@ -44,8 +44,8 @@
             color: green;
         }
     </style>
-    <p id="myid" class="myclass">This is line one</p>
-    <p id="myid" class="myclass" style="color: blue">  <!-- color = blue because inline style takes precedence over others -->
+    <p id="myid1" class="myclass">This is line one</p>
+    <p id="myid2" class="myclass" style="color: blue">  <!-- color = blue because inline style takes precedence over others -->
         This is line two
     </p>
     > Line 1 is red because id takes precedence over class<br>
@@ -129,7 +129,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            align-items: end;
+            align-items: flex-end;
             /* ***************** */
             border: 1px solid black;
             height: 500px;
