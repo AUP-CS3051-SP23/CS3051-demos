@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+This shows different methods of calling a nodejs server from a web page.
+Once the server starts up, it listens for requests from browsers.
+The basic request returns the HTML for a web page (fetch2.html).
+That's the page you see when you go to that URL.
+
+Using app.get() and app.post() you can set up "routes".
+These are strings in the URL following the URL (https://localhost:8080/)
+and recognized by the server. For example, `app.get('/textresponse')` responds to
+(https://localhost:8080/textresponse)
+
+The difference between GET and POST is that GET has argument valuesin the URL and
+POST has argument values passed as a "body" attribute in the HTTP call.
+
+The server code example here has a mix of GETs and POSTs, some returning text,
+some returning a file, and some returning JSON.
+ -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Node test</title>
+
+</head>
+
+<body>
+  <button id='b1' onclick="pressedText()">Text response</button>
+  <button id='b2a' onclick="pressedJSONa()">JSON response A</button>
+  <button id='b2b' onclick="pressedJSONb()">JSON response B</button>
+  <button id='b2c' onclick="pressedHTMsnippet()">HTML snippet</button>
+  <button id='b2d' onclick="pressedImages()">Images</button>
+  <div id='response1'>Response goes here</div>
+  <p>
+    First name
+    <input id="fname" type="text"></input>
+    <br>
+    Last name
+    <input id="lname" type="text"></input>
+    <br>
+    <button id='b3' onclick="pressedInPath()">GET request in path</button>
+    <button id='b3' onclick="pressedAsArgs()">GET request as args</button>
+    <button id='b4' onclick="pressedPOST()">POST request</button>
+    <br>
+  <div id='response2'></div>
+  </p>
+
+  <script>
+    function pressedText(event) {
+      fetch("/textresponse")
+        .then(function (response) { return response.text(); }) // we are expecting a text response
+        .then(function (data) {
+          document.querySelector('#response1').innerHTML = data;
+        });
+    }
+
+    function pressedJSONa(event) {
+      fetch("/jsonresponseA")
+        .then(response => response.json()) // we are expecting a JSON response
+        .then(data => {  // this is the same as .then(function(data) {
+          console.log(data);
+          console.log('data.item3 =', data.item3);
+          document.querySelector('#response1').innerHTML = JSON.stringify(data);
+        });
+    }
+
+    function pressedJSONb(event) {
+      fetch("/jsonresponseB")
+        .then(response => response.json()) // we are expecting a JSON response
+        .then(data => {
+          console.log(data);
+          document.querySelector('#response1').innerHTML = JSON.stringify(data);
+        });
+    }
+
+    function pressedHTMsnippet(event) {
+      fetch("/books")
+        .then(function (response) { return response.text(); }) // we are expecting a text response
+        .then(function (data) {
+          document.querySelector('#response1').innerHTML = data;
+        });
+    }
+
+    function pressedImages(event) {
+      fetch("/images")
+        .then(function (response) { return response.text(); }) // we are expecting a text response
+        .then(function (data) {
+          document.querySelector('#response1').innerHTML = data;
+        });
+    }
+
+    function pressedInPath(event) {
+      let fn = document.querySelector("#fname").value;
+      let ln = document.querySelector("#lname").value;
+      fetch(`/getrequest/${fn}/${ln}`)  // GET puts values in URL path
+        .then(response => response.json()) // we are expecting a JSON response
+        .then(data => {
+          console.log(data);
+          document.querySelector('#response2').innerHTML =
+            `In path: ${data.first} ${data.last}`;
+        });
+    }
+
+    function pressedAsArgs(event) {
+      let fn = document.querySelector("#fname").value;
+      let ln = document.querySelector("#lname").value;
+      fetch(`/getrequest/?first=${fn}&last=${ln}`)  // GET puts args in URL
+        .then(response => response.json()) // we are expecting a JSON response
+        .then(data => {
+          console.log(data);
+          document.querySelector('#response2').innerHTML =
+            `In args: ${data.first} ${data.last}`;
+        });
+    }
+
+    function pressedPOST(event) {
+      let fn = document.querySelector("#fname").value;
+      let ln = document.querySelector("#lname").value;
+      let mybody = {
+        first: fn,
+        last: ln
+      }
+      fetch("/postrequest", {
+        method: 'POST', // POST puts args in body
+        headers: {
+          'Content-Type': 'application/json' // says that arguments are JSON formatted
+        },
+        body: JSON.stringify(mybody) // POST puts arguments in the message body
+      })
+        .then(response => response.json()) // we are expecting a text response
+        .then(data => {
+          console.log(data);
+          document.querySelector('#response2').innerHTML =
+            `As POST: ${data.last}, ${data.first}`;
+        });
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Fetch test</title>
+
+</head>
+
+<body>
+    <button id='b' onclick="pressed()">Click me</button>
+    <div id='response'></div>
+
+    <script>
+        function pressed(e) {
+            fetch("/textresponse")
+                .then(function (response) { return response.text(); })
+                .then(function (data) {
+                    document.querySelector('#response').innerHTML = data;
+                });
+        }
+
+    </script>
+</body>
+
+</html>
