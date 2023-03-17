@@ -59,9 +59,8 @@ app.get('/jsonresponseB', function (req, res) {
 
 // Return a JSON object to a GET request with parameters as part of the URL
 app.get('/getrequest/:first/:last', function (req, res) {
-    console.log(req.params);
+    console.log("/getrequest/:first/:last got:", req.params);
     let fn = req.params.first;  // use res.query.<field_name> for GET parameters
-    console.log(fn);
     fn = fn[0].toUpperCase() + fn.slice(1);
     let ln = req.params.last;
     ln = ln.toUpperCase();
@@ -70,7 +69,7 @@ app.get('/getrequest/:first/:last', function (req, res) {
 
 // Return a JSON object to a GET request with parameters in the URL string
 app.get('/getrequest', function (req, res) {
-    console.log(req.query);
+    console.log("/getrequest got:", req.query);
     let fn = req.query.first;  // use res.query.<field_name> for GET parameters
     fn = fn[0].toUpperCase() + fn.slice(1);
     let ln = req.query.last;
@@ -100,7 +99,7 @@ app.use(bodyParser.json());  // this tells the server to look for JSON requests
 
 // Return a text string to a POST request with parameters in the request body
 app.post('/postrequest', function (req, res) {
-    console.log(req.body);
+    console.log("/postrequest got:", req.body);
     let fn = req.body.first;  // use res.body.<field_name> in POST requests
     fn = fn[0].toUpperCase() + fn.slice(1);
     let ln = req.body.last;
