@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Cookies</title>
+
+</head>
+
+<body>
+    <input id="name" type="text" placeholder="Enter your name">
+    <button onclick="docookies('name')">Set name cookie</button>
+
+    <p id="cookies"></p>
+    <p id="visits"></p>
+
+    <script>
+        const c = document.querySelector('#cookies');
+
+        fetch("/visits")
+            .then(function (response) { return response.text(); })
+            .then(function (data) {
+                document.querySelector('#visits').innerHTML =
+                    "You have visited this page " + data + " times";
+            });
+
+        function docookies(path) {
+            // get the name from the input field
+            let name = document.querySelector('#name').value;
+            fetch("/" + path + "/" + name)
+                .then(function () {
+                    // show cookies
+                    c.innerHTML = document.cookie;
+                });
+        }
+
+    </script>
+</body>
+
+</html>

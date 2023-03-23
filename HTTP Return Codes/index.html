@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>HTML return code</title>
+
+</head>
+
+<body>
+    <button onclick="okay()">200 Okay</button>
+    <button onclick="filenotfound()">File Not found</button>
+    <button><a href="/xxxx">404 Not found</a></button>
+    <button onclick="get500()">500 Internal Server Error </button>
+    <button onclick="teapot()">Teapot</button>
+    <button onclick="headers()">Headers</button>
+    <p>
+    <div id='responseStatus'></div>
+    <div id='responseText'></div>
+    </p>
+
+    <script>
+        const responseStatus = document.querySelector('#responseStatus');
+        const responseText = document.querySelector('#responseText');
+
+        processResponse = function (response) {
+            responseStatus.innerHTML =
+                `Status: ${response.status} "${response.statusText}"" ${response.ok}`;
+            response.text()
+                .then(function (data) {
+                    responseText.innerHTML = data;
+                })
+        }
+
+        function okay() {
+            fetch("/okay")
+                .then(processResponse);
+        }
+
+        function filenotfound() {
+            fetch("/filenotfound")
+                .then(processResponse);
+        }
+
+        function notfound() {
+            fetch("/xxxxxx")
+                .then(processResponse);
+        }
+
+        function get500() {
+            fetch("/500")
+                .then(processResponse);
+        }
+
+        function teapot() {
+            fetch("/teapot")
+                .then(processResponse);
+        }
+
+        function headers() {
+            fetch("/headers")
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+                responseText.innerHTML = "<pre>" +
+                    JSON.stringify(data.headers, null, 2) +
+                    "</pre>" +
+                    "<p>User agent: " + data.userAgent + "</p>";
+            });
+        }
+
+    </script>
+</body>
+
+</html>
