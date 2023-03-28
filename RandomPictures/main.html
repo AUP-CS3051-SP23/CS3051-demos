@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Node1 assigment</title>
+    <style>
+        #myimg {
+            width: 300px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id='b' onclick="pressed()">New image</button>
+    <br>
+    <img id='myimg'>
+
+    <script>
+        function pressed(e) {
+            fetch("/img")
+                .then(function (response) { return response.text(); })
+                .then(function (data) {
+                    document.querySelector('#myimg').src = data;
+                });
+        }
+    </script>
+</body>
+
+</html>
