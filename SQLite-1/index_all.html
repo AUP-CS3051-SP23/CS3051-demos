@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>SQLite</title>
+</head>
+
+<body>
+    <input type="text" id="name" placeholder="Name">
+    <button onclick="addUser()">Add User</button>
+    <p>
+        <button onclick="listUsers()">List Users</button>
+    </p>
+    <div id="users"></div>
+    <script>
+        function addUser() {
+            let name = document.getElementById('name').value;
+            fetch(`/adduser?name=${name}`)
+                .then(function () {
+                    listUsers();
+                });
+        }
+
+        function listUsers() {
+            fetch('/getusers')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    let users = document.getElementById('users');
+                    users.innerHTML = '';
+                    for (let i = 0; i < data.length; i++) {
+                        users.innerHTML += `${data[i].name} (${data[i].id})<br>`;
+                    }
+                });
+        }
+    </script>
+</body>
+
+</html>
