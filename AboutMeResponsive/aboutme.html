@@ -46,6 +46,9 @@
             function select(event) {
                 const item = event.target;
                 const menubutton = document.querySelector("#menubutton");
+                // note the use here of window.getComputedStyle() to get the current display value
+                // We can't use menu.style.display because it will be empty if the display value
+                // is the default CSS value
                 if (window.getComputedStyle(menubutton).display != "none") {
                     menu.style.display = "";
                 }
