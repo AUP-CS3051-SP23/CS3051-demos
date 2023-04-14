@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About David Sturman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <img id="menubutton" onclick="toggleMenu()" src="menu-burger.svg">
+            <h1>David Sturman</h1>
+        </div>
+
+        <div id="menu">
+            <ul>
+                <li id="home">Home</li>
+                <li id="likes">What I like</li>
+                <li id="sites">Favorite sites</li>
+                <li id="lived">Where I've lived</li>
+            </ul>
+        </div>
+
+        <div id="content">
+        </div>
+
+        <div id="footer">
+            Copyright &copy; 2023 David Sturman
+        </div>
+
+        <script>
+            const listItems = document.querySelectorAll("#menu li");
+            for (i = 0; i < listItems.length; i++) {
+                listItems[i].addEventListener("click", select);
+            }
+            getContent("home");
+
+            const menu = document.querySelector("#menu");
+            function toggleMenu() {
+                menu.style.display = window.getComputedStyle(menu).display == "block" ? "" : "block";
+            }
+
+            function select(event) {
+                const item = event.target;
+                const menubutton = document.querySelector("#menubutton");
+                if (window.getComputedStyle(menubutton).display != "none") {
+                    menu.style.display = "";
+                }
+                getContent(event.target.id);
+            }
+
+            function getContent(page) {
+                fetch(page + ".html")
+                    .then(response => response.text()) // we are expecting a text response
+                    .then(data => {
+                        document.querySelector('#content').innerHTML = data;
+                        setMenuItem(page);
+                    });
+            }
+
+            function setMenuItem(selectedItem) {
+                for (i = 0; i < listItems.length; i++) {
+                    if (listItems[i].id == selectedItem) {
+                        listItems[i].classList.add("item-selected");
+                    } else {
+                        listItems[i].classList.remove("item-selected");
+                    }
+                }
+            }
+
+        </script>
+</body>
+
+</html>
