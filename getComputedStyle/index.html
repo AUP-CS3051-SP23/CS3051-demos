@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Computed Styles</title>
+    <style>
+        :root {
+            --mysize: 1.5em;
+        }
+
+        body {
+            font-size: var(--mysize);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hdrtext">Getting CSS values in Javascript</div>
+    <div id="cssresult" style="font-size: 20px;"></div>
+    <script>
+        let hdrtext = document.querySelector("#hdrtext");
+        let cssresult = document.querySelector("#cssresult");
+
+        let s = "<br>";
+
+        // Different ways of getting the CSS value of a standard CSS element
+        // Note: the value of the CSS property is returned as a string, so you may need to convert it to a number
+
+        // The following only works for inline CSS values or values set directly on the element with JavaScript
+        // Note: use the CSS name of the property in getPropertyValue(), and the JavaScript name elsewhere
+        //   for example, use "font-size" in getPropertyValue() and "fontSize" elsewhere
+        s += "hdrtext.style.fontSize = " +
+            hdrtext.style.fontSize + "<br>";
+        // getComputedStyle() works for all CSS values
+        s += "window.getComputedStyle(hdrtext).fontSize = " +
+            window.getComputedStyle(hdrtext).fontSize + "<br>";
+        s += "window.getComputedStyle(hdrtext)['fontSize'] = " +
+            window.getComputedStyle(hdrtext)['fontSize'] + "<br>";
+        s += "window.getComputedStyle(hdrtext).getPropertyValue('font-size') = " +
+            window.getComputedStyle(hdrtext).getPropertyValue('font-size') + "<br>";
+
+        s += "<br>";
+
+        // The following works because font-size is set inline on the element
+        s += "cssresult.style.fontSize = " +
+            cssresult.style.fontSize + "<br>";
+        // getComputedStyle() works for all CSS values
+        s += "window.getComputedStyle(cssresult).fontSize = " +
+            window.getComputedStyle(cssresult).fontSize + "<br>";
+        s += "window.getComputedStyle(cssresult).getPropertyValue('font-size') = " +
+            window.getComputedStyle(cssresult).getPropertyValue('font-size') + "<br>";
+
+        s += "<br>";
+
+        // To get a CSS value of a custom CSS element, use window.getComputedStyle(element).getPropertyValue("propertyname")
+        // Note: documentElement is the <html> element, so it the same as querySelector("html")
+        s += "window.getComputedStyle(document.documentElement).getPropertyValue('--mysize') = " +
+            window.getComputedStyle(document.documentElement).getPropertyValue('--mysize') + "<br>";
+        // The method below does not work for custom CSS elements (but does for standard CSS elements)
+        s += "window.getComputedStyle(document.documentElement)['--mysize'] = " +
+            window.getComputedStyle(document.documentElement)['--mysize'] + "<br>";
+
+        cssresult.innerHTML = s;
+
+    </script>
+</body>
+
+</html>
