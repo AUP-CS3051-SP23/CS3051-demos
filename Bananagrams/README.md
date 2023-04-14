@@ -15,7 +15,7 @@ html {
     height: var(--tilesize);
     position: relative;  /* relative to the board ... an area in a grid */
 }
-let tilesize = parseInt(document.querySelector("html").style.["--tilesize"]);
+let tilesize = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--tilesize"));
 ```
 
 What code do you need to move tiles?
@@ -28,8 +28,8 @@ function movetile(event) {
     let tile = event.target;
     // look for the next click
     // get mouse position of that click from the event
-    let mx = 
-    let my = 
+    let mx = event.clientX;
+    let my = event.clientY;
     tile.style.left = Math.floor(mx / tilesize) * tilesize;
 }
 ```
