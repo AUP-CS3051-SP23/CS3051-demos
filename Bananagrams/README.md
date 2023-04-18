@@ -57,16 +57,31 @@ Where is the player’s “hand” vs. the board?
 How do you tell if a tile is in the bunch, a player’s hand (and which player), or on the board (and which player’s board)?
 
 What do you need to keep in the database?
+Position of the tile, letter, player, game
+Position: state of the tile, x, y
+Player: Id, Name, Game
+Games: Id, gamename, open/closed
+
+Get a new tile for a player:
+SELECT * FROM tiles WHERE game=game-for-player AND state-of-tile = in-bag
 
 How do you identify a player?
+Unique ID
 
 How do you know what player is in what game and what tiles are in which game?
 
 How do you initialize tiles for a game?
 
 How do you know what games have been created, are running?
+Either
+  Games table : gamename, id
+Or
+  Just look at the player table
 
 How can you determine if all tiles on the board are “connected”?
+Depth-first searh on any tile, marking all connected
+If any tiles are unmarked when done, then not all are connected.
+Run this on "Peel" and "Banana"
 
 How do players get updates on the state of other players?
 
