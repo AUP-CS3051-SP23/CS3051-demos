@@ -46,47 +46,51 @@ or look like an empty spot on the board)
 
 
 What does your board look like?
- - a space in a CSS Grid
+ - A space in a CSS Grid
  - An arrangement of `<div>`s in a grid
 
 Where are the different buttons?
  - Split, Peel, Dump, Bananas
 
 Where is the player’s “hand” vs. the board?
+  - Above the board, to the side of the board, or below the board?
 
 How do you tell if a tile is in the bunch, a player’s hand (and which player), or on the board (and which player’s board)?
+  - Keep a field in the database or code it into "special" x,y coordinates
 
 What do you need to keep in the database?
-Position of the tile, letter, player, game
-Position: state of the tile, x, y
-Player: Id, Name, Game
-Games: Id, gamename, open/closed
+  - Tile table: state of the tile, x, y, letter, player, game
+  - Player table: id, player_name, game
+  - Games table: id, game_name, open/closed
+  - NOTE: You will want to keep a copy of this in your browser javascript so you
+  don't have to go to the database all the time. You can update the database
+  when you need to, but you can also update the javascript copy when you need to.
 
 Get a new tile for a player:
-SELECT * FROM tiles WHERE game=game-for-player AND state-of-tile = in-bag
+  - SELECT * FROM tiles WHERE game=game-for-player AND state-of-tile = in-bag
 
 How do you identify a player?
-Unique ID
+  - By their unique ID stored in a cookie
 
 How do you know what player is in what game and what tiles are in which game?
+  - Each player has an associated game id (another method needs to be used if a player can be in multiple games at once, but let's not worry about that for now)
 
 How do you initialize tiles for a game?
 
 How do you know what games have been created, are running?
-Either
-  Games table : gamename, id
-Or
-  Just look at the player table
+  - Either
+    - Games table : gamename, id
+  - Or
+    - Just look at the player table
 
 How can you determine if all tiles on the board are “connected”?
-Depth-first searh on any tile, marking all connected
-If any tiles are unmarked when done, then not all are connected.
-Run this on "Peel" and "Banana"
+  - Depth-first searh on any tile, marking all connected
+  - If any tiles are unmarked when done, then not all are connected.
+  - Run this on "Peel" and "Banana"
 
 How do players get updates on the state of other players?
 
 What information do you need to draw any player’s board?
 
-What functions will you write?
-
-For example: createNewGame() which calls createBunchofTiles()
+What functions will you need to write?
+  - For example: createNewGame() which calls createBunchofTiles()
