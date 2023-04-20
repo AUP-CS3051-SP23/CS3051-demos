@@ -11,15 +11,22 @@
 </head>
 
 <body>
-    <!--
-        Put here an input box for the 5-letter word pattern you want to match.
-        Use the . (dot) character for unknown letters.
-        For example "a...e" will match all words that have 5 letters and the first letter is "a" and the last letter is "e".
-        Add a submit button to send the pattern to the server and get the matching words.
-    -->
+    <input type="text" id="word" maxlength="5">
+    <button onclick="testword()">Submit</button>
+    <div id="result"></div>
 
     <script>
         // Put a function here that sends the pattern to the server and gets the matching words.
+        function testword() {
+            var word = document.querySelector("#word").value;
+            fetch("/testword?word=" + word)
+                .then(function(response) {
+                    return response.text();
+                })
+                .then(function(data) {
+                    document.querySelector("#result").innerHTML = data;
+                });
+        }
     </script>
 </body>
 

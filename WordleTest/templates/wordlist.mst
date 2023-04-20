@@ -1,0 +1,12 @@
+{{^wordlist}}
+    No words found.
+{{/wordlist}}
+
+{{#wordlist.length}}
+Found words
+</ul>
+    {{#wordlist}}
+    <li>{{.}}</li>
+    {{/wordlist}}
+</ul>
+{{/wordlist.length}}

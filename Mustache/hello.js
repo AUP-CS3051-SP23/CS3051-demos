@@ -9,16 +9,11 @@ app.engine('mst', mustacheExpress()); // register the .mst extension with the en
 app.set('views', path.join(__dirname, 'templates')) // set the directory for the .mst files
 app.set('view engine', 'mst'); // set engine to render .mst files
 
+app.use(express.static('.'));
 
 /* This code sends a fixed text string */
 app.get('/', function(req, res) {
   res.render('hello', {"name": "David J. Sturman"});
-});
-
-// This code return jpg images, html, css, and js files
-// The first parameter is an array of file extensions to match
-app.get(['/*.jpg', '/*.css', '/*.html', '/*.js'], function (req, res) {
-  res.sendFile(path.join(__dirname, req.path)); // req.path is the path of the requested file
 });
 
 // Start listening for requests on the designated port
