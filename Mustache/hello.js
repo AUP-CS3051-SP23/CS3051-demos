@@ -13,7 +13,7 @@ app.use(express.static('.'));
 
 /* This code sends a fixed text string */
 app.get('/', function(req, res) {
-  res.render('hello', {"name": "David J. Sturman"});
+  res.render('hello', {name: "David Sturman"});
 });
 
 // Start listening for requests on the designated port
