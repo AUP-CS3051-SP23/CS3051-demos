@@ -59,9 +59,9 @@ or look like an empty spot on the board)
   - Keep a field in the database or code it into "special" x,y coordinates
 
 **What do you need to keep in the database?**
-  - Tile table: state of the tile, x, y, letter, player, game
-  - Player table: id, player_name, game
-  - Games table: id, game_name, open/closed
+  - Tile table: state of the tile, x, y, letter, player_id, game_id
+  - Player table: player_id, player_name, game_id
+  - Games table: game_id, game_name, open/closed
   - NOTE: You will want to keep a copy of this in your browser javascript so you
   don't have to go to the database all the time. You can update the database
   when you need to, but you can also update the javascript copy when you need to.
@@ -76,6 +76,7 @@ or look like an empty spot on the board)
   - Each player has an associated game id (another method needs to be used if a player can be in multiple games at once, but let's not worry about that for now)
 
 **How do you initialize tiles for a game?**
+Create 144 new tiles in the database with the new game_id
 
 **How do you know what games have been created, are running?**
   - Either
@@ -89,8 +90,20 @@ or look like an empty spot on the board)
   - Run this on "Peel" and "Banana"
 
 **How do players get updates on the state of other players?**
+setInterval(getupdate, 10*1000)
+Keep a game "version" number and update if yoru version number is less than the game "version" number
+For example
+Sophia clicks "Peel"
+Server returns new tile to Sophia and updates the game version
+{version: 23, update: {peel:true, bananas: false}}
+Paul's interval triggers and he calls the server for an update and sends his version
+Server respons with the update object
+{version: 23, update: {peel:true, bananas: false}, newtile: {letter:"D", id:23423}}
+Paul is on version 22, and see a peel. Paul requests a new tile.
+Alternatively, send back the number of peels Paul missed (if, for example,. Paul was on version 21)
 
 **What information do you need to draw any player’s board?**
+Get the tile information from a specific player and call a fill-board function
 
 **What functions will you need to write?**
   - For example: createNewGame() which calls createBunchofTiles()
