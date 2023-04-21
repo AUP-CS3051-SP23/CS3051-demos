@@ -6,7 +6,7 @@
 - or `<div id="tile23">X</div>`
 - Autogenerate the tile ids - tile1 to tile144, or tile0 to tile143
 - CSS for the tile:
-```
+```css
 html {
     --tilesize: 10px;
 }
@@ -15,11 +15,13 @@ html {
     height: var(--tilesize);
     position: relative;  /* relative to the board ... an area in a grid */
 }
+```
+```javascript
 let tilesize = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--tilesize"));
 ```
 
 **What code do you need to move tiles?**
-```
+```javascript
 for (let t=0; t<144; t++) {
     t.addEventListener("click", movetile);
 }
@@ -67,7 +69,9 @@ or look like an empty spot on the board)
   when you need to, but you can also update the javascript copy when you need to.
 
 **Get a new tile for a player:**
-  - SELECT * FROM tiles WHERE game=game-for-player AND state-of-tile = in-bag
+```sql
+SELECT * FROM tiles WHERE game = game_for_player AND state_of_tile = in_bag;
+```
 
 **How do you identify a player?**
   - By their unique ID stored in a cookie
@@ -90,20 +94,20 @@ Create 144 new tiles in the database with the new game_id
   - Run this on "Peel" and "Banana"
 
 **How do players get updates on the state of other players?**
-setInterval(getupdate, 10*1000)
-Keep a game "version" number and update if yoru version number is less than the game "version" number
-For example
-Sophia clicks "Peel"
-Server returns new tile to Sophia and updates the game version
-{version: 23, update: {peel:true, bananas: false}}
-Paul's interval triggers and he calls the server for an update and sends his version
-Server respons with the update object
-{version: 23, update: {peel:true, bananas: false}, newtile: {letter:"D", id:23423}}
-Paul is on version 22, and see a peel. Paul requests a new tile.
-Alternatively, send back the number of peels Paul missed (if, for example,. Paul was on version 21)
+  - Query the server at regular intervals: ``setInterval(getupdate, 10*1000)``
+  - Keep a game "version" number and update if your version number is less than the game "version" number
+    - For example
+      - Sophia clicks "Peel"
+      - Server returns new tile to Sophia and updates the game version  
+      ```{version: 23, update: {peel:true, bananas: false}}```
+      - Paul's interval triggers and he calls the server for an update and sends his version
+      - Server respons with the update object  
+        ```{version: 23, update: {peel:true, bananas: false}, newtile: {letter:"D", id:23423}}```
+      - Paul is on version 22, and sees a peel. Paul requests a new tile.
+      - **Alternatively**, send back the number of peels Paul missed (for example, if Paul was on version 21)
 
 **What information do you need to draw any player’s board?**
-Get the tile information from a specific player and call a fill-board function
+  - Get the tile information from a specific player and call a fill-board function
 
 **What functions will you need to write?**
   - For example: createNewGame() which calls createBunchofTiles()
