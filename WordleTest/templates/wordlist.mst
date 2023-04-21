@@ -3,7 +3,7 @@
 {{/wordlist}}
 
 {{#wordlist.length}}
-Found words
+Found {{wordlist.length}} words
 </ul>
     {{#wordlist}}
     <li>{{.}}</li>
