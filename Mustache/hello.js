@@ -16,6 +16,10 @@ app.get('/', function(req, res) {
   res.render('hello', {name: "David Sturman"});
 });
 
+app.get('/:name', function(req, res) {
+  res.render('hello2', {name: req.params.name});
+});
+
 // Start listening for requests on the designated port
 // This can be at the beginning, or the end, or in-between.
 // Conventionally it is put at the end
