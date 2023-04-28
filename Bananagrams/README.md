@@ -111,3 +111,15 @@ Create 144 new tiles in the database with the new game_id
 
 **What functions will you need to write?**
   - For example: createNewGame() which calls createBunchofTiles()
+
+**How do I mark tiles?**
+```html
+<div class="tile">A</div>
+```
+```javascript
+let tiles = document.querySelectAll(".tiles");
+let letter = tiles[n].innerHTML;
+let xpos = tiles[n].style.left;
+tiles[n].marker = true; or use setAttribute(), getAttribute()
+let marked = document.querySelectAll(".tiles [marked=true]");
+```
