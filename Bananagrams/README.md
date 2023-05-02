@@ -61,7 +61,7 @@ or look like an empty spot on the board)
   - Keep a field in the database or code it into "special" x,y coordinates
 
 **What do you need to keep in the database?**
-  - Tile table: state of the tile, x, y, letter, player_id, game_id
+  - Tile table: tile_id, state of the tile, x, y, letter, player_id, game_id
   - Player table: player_id, player_name, game_id
   - Games table: game_id, game_name, open/closed
   - NOTE: You will want to keep a copy of this in your browser javascript so you
