@@ -156,3 +156,15 @@ SELECT * FROM tiles WHERE game = game_for_player AND state_of_tile = in_bunch OR
     - pass in the player ID and the game ID
     - return a list of tiles (tile_id, letter, x, y)
 
+
+**How do I mark tiles?**
+```html
+<div class="tile">A</div>
+```
+```javascript
+let tiles = document.querySelectAll(".tiles");
+let letter = tiles[n].innerHTML;
+let xpos = tiles[n].style.left;
+tiles[n].marker = true; or use setAttribute(), getAttribute()
+let marked = document.querySelectAll(".tiles [marked=true]");
+```
