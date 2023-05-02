@@ -61,16 +61,21 @@ or look like an empty spot on the board)
   - Keep a field in the database or code it into "special" x,y coordinates
 
 **What do you need to keep in the database?**
-  - Tile table: tile_id, state of the tile, x, y, letter, player_id, game_id
-  - Player table: player_id, player_name, game_id
-  - Games table: game_id, game_name, open/closed
+  - Tile table:\
+  ```tile_id, state_of_tile, x, y, letter, player_id, game_id```
+  - Player table:\
+  ```player_id, player_name, game_id```
+  - Games table:\
+  ```game_id, game_name, open/closed, peel_count, winner_id```
   - NOTE: You will want to keep a copy of this in your browser javascript so you
   don't have to go to the database all the time. You can update the database
   when you need to, but you can also update the javascript copy when you need to.
 
 **Get a new tile for a player:**
 ```sql
-SELECT * FROM tiles WHERE game = game_for_player AND state_of_tile = in_bag;
+SELECT * FROM tiles WHERE game = game_for_player AND state_of_tile = in_bunch ORDER BY RAND() LIMIT 1;
+/* you might represent in_bunch as 0 */
+/* To get N tiles, change the LIMIT to N */
 ```
 
 **How do you identify a player?**
@@ -80,7 +85,7 @@ SELECT * FROM tiles WHERE game = game_for_player AND state_of_tile = in_bag;
   - Each player has an associated game id (another method needs to be used if a player can be in multiple games at once, but let's not worry about that for now)
 
 **How do you initialize tiles for a game?**
-Create 144 new tiles in the database with the new game_id
+  - Create 144 new tiles in the database with the new game_id
 
 **How do you know what games have been created, are running?**
   - Either
@@ -89,25 +94,65 @@ Create 144 new tiles in the database with the new game_id
     - Just look at the player table
 
 **How can you determine if all tiles on the board are “connected”?**
-  - Depth-first searh on any tile, marking all connected
+  - Depth-first search on any tile, marking all connected
   - If any tiles are unmarked when done, then not all are connected.
   - Run this on "Peel" and "Banana"
 
 **How do players get updates on the state of other players?**
   - Query the server at regular intervals: ``setInterval(getupdate, 10*1000)``
-  - Keep a game "version" number and update if your version number is less than the game "version" number
+  - Keep a peel count for a game and update if your peel count is less than the game peel count
     - For example
       - Sophia clicks "Peel"
-      - Server returns new tile to Sophia and updates the game version  
-      ```{version: 23, update: {peel:true, bananas: false}}```
-      - Paul's interval triggers and he calls the server for an update and sends his version
-      - Server respons with the update object  
-        ```{version: 23, update: {peel:true, bananas: false}, newtile: {letter:"D", id:23423}}```
-      - Paul is on version 22, and sees a peel. Paul requests a new tile.
-      - **Alternatively**, send back the number of peels Paul missed (for example, if Paul was on version 21)
+      - Server returns new tile to Sophia and updates the game peel count
+      ```{count: 23, tile: {tileid: 2003, letter: "A"}}```
+      - Sophia updates her peel count and adds the new tile to her hand
+      - Paul's update interval triggers and he calls the server for an update with his current peel count
+      - Server responds with the update object showing the current number of peels for that game (and if someone has called "Bananas")
+        ```{count: 23, bananas: 0}```
+      - Paul's own count is 21, so he knows he missed a two peels. He retrieves the number of tiles he needs and updates his peel count.
 
 **What information do you need to draw any player’s board?**
   - Get the tile information from a specific player and call a fill-board function
 
-**What functions will you need to write?**
-  - For example: createNewGame() which calls createBunchofTiles()
+**What server functions will you need to write?**
+  - /newGame - create a new game and set of tiles
+    - pass in the game name
+    - return the game ID
+  - /listGames - return a list of games
+    - no arguments to pass in
+    - return a list of game names and IDs
+  - /newPlayer - add a player to the DB, return the player ID
+    - pass in the player name
+    - return the player ID
+  - /joinGame - add a player to a game
+    - pass in the player ID and the game ID
+    - return confirmation (status 200)
+  - /split - start a game (mark in the BD as in progress)
+    - pass in the game ID
+    - return confirmation (status 200)
+  - /getNewHand - return 21 random tiles from a game to a player
+    - pass in the player ID and the game ID
+    - return an array of 21 tiles (tile_id, letter)
+  - /getNewTiles - return N random tiles from a game to a player
+    - pass in the player ID, the game ID, and the number of tiles needed
+    - return a tile array\
+    ```[{id: 2003, letter: "A"}, {id: 2014, letter: "D"}, ...]```
+  - /placeTile - set the x, y, and status of a tile in the DB
+    - pass in the tile ID, the x, the y, and the status
+    - return confirmation (status 200)
+  - /peel - return a random tile from a game to a player, signal to all players that a peel has happened
+    - pass in the player ID and the game ID
+    - return a tile (tile_id, letter)
+  - /dump - mark the given tile as back in the bunch and return 3 new random tiles to the player
+    - pass in the player ID, the game ID, and the tile ID
+    - return a list of 3 tiles (tile_id, letter)
+  - /getUpdate - return the current game state
+    - pass in the player ID, the game ID, and the player's peel count
+    - return the game state (peel count, bananas). If someone has called bananas, return the "winners" player ID so that the client can request the winners board.
+  - /bananas - end the game, show the "winners" board
+    - pass in the player ID and the game ID
+    - return confirmation (status 200)
+  - /getBoard - get the board of any player
+    - pass in the player ID and the game ID
+    - return a list of tiles (tile_id, letter, x, y)
+
