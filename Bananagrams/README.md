@@ -130,7 +130,7 @@ SELECT * FROM tiles WHERE game = game_for_player AND state_of_tile = in_bunch OR
   - /split - start a game (mark in the BD as in progress)
     - pass in the game ID
     - return confirmation (status 200)
-  - /getNewHand - return 21 random tiles from a game to a player
+  - /getNewHand - return 21 random tiles from a game to a player (optional)
     - pass in the player ID and the game ID
     - return an array of 21 tiles (tile_id, letter)
   - /getNewTiles - return N random tiles from a game to a player
@@ -147,7 +147,7 @@ SELECT * FROM tiles WHERE game = game_for_player AND state_of_tile = in_bunch OR
     - pass in the player ID, the game ID, and the tile ID
     - return a list of 3 tiles (tile_id, letter)
   - /getUpdate - return the current game state
-    - pass in the player ID, the game ID, and the player's peel count
+    - pass in the player ID, the game ID
     - return the game state (peel count, bananas). If someone has called bananas, return the "winners" player ID so that the client can request the winners board.
   - /bananas - end the game, show the "winners" board
     - pass in the player ID and the game ID
