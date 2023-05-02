@@ -25,12 +25,39 @@ app.get('/getusers', function (req, res) {
 });
 
 app.get('/adduser', function (req, res) {
-    const id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER));
-    addUser(database, id, req.query.name)
+    let name = req.query.name;
+    // const id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER));
+    addUser(database, req.query.name)
         .then(function () {
             res.end();
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).end();
         });
 });
+
+async function addUser(db, name) {
+    return new Promise((resolve, reject) => {
+        db.get("SELECT MAX(id) AS maxid FROM users", function (err, row) {
+            if (err) {
+                reject(err);
+            } else {
+                console.log(row);
+                let id = row.maxid + 1;
+                db.run("INSERT INTO users ('id', 'name') VALUES (?, ?)", [id, name], function (err, rows) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        // perhaps put the new userid into a cookie or
+                        // return it to the browser to save
+                        resolve();
+                    }
+                });
+            }
+        });
+    });
+}
 
 async function getUsers(db) {
     return new Promise((resolve, reject) => {
@@ -44,17 +71,6 @@ async function getUsers(db) {
     });
 }
 
-async function addUser(db, id, name) {
-    return new Promise((resolve, reject) => {
-        db.run("INSERT INTO users ('id', 'name') VALUES (?, ?)", [id, name], function (err, rows) {
-            if (err) {
-                reject(err);
-            } else {
-                resolve();
-            }
-        });
-    });
-}
 
 // Start listening for requests on the designated port
 // This can be at the beginning, or the end, or in-between.
