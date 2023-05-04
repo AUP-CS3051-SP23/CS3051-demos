@@ -73,7 +73,7 @@ or look like an empty spot on the board)
 
 **Get a new tile for a player:**
 ```sql
-SELECT * FROM tiles WHERE game = game_for_player AND state_of_tile = in_bunch ORDER BY RAND() LIMIT 1;
+SELECT * FROM tiles WHERE game = game_for_player AND state_of_tile = in_bunch ORDER BY RANDOM() LIMIT 1;
 /* you might represent in_bunch as 0 */
 /* To get N tiles, change the LIMIT to N */
 ```
