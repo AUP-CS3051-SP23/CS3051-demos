@@ -1,0 +1,17 @@
+{
+  "name": "bananagrams",
+  "version": "1.0.0",
+  "description": "What CSS and Javascript do you need to position tiles?\r Fixed position in the central portion of a CSS grid",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6"
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width"> -->
+    <title>Bananagrams</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="introscreen">
+        <h1>Bananagrams <span id="player"></span></h1>
+        <div id="playerchoice">
+            <div id="currentplayer" onclick="playAs()"></div>
+            <div id="chooseplayer">
+                <input type="text" id="playername" placeholder="Player name">
+                <button onclick="newPlayer()">New Player</button>
+            </div>
+            <button id="clearDB" onclick="clearDB()">Clear Database</button>
+        </div>
+        <div id="gamechoice">
+            Join a game:
+            <ul>
+                <li>
+                    <input type="text" id="gamename" placeholder="New game name">
+                    <button onclick="newGame()">New Game</button>
+                </li>
+                <span id="games"></span>
+            </ul>
+        </div>
+    </div>
+    <div id="gamecontainer">
+        <div id="gamescreen">
+            <div id="info">
+                <div id="pname"></div>
+                <div id="gname"></div>
+            </div>
+            <div id="board"></div>
+            <div id="hand"></div>
+            <div id="buttons">
+                <div id="dump">DUMP</div>
+                <button id="peel" onclick="peel()">Peel</button>
+                <button id="bananas" onclick="bananas()">Bananas</button>
+                <button id="split" onclick="split()">Split</button>
+                <span>
+                    <input type="checkbox" id="usedrag" onclick="setDrag()">Drag
+                </span>
+                <div id="players">
+                    Players:
+                    <div id="playerlist"></div>
+                </div>
+            </div>
+            <div id="footer">copyright &copy; 2023 David Sturman</div>
+            <div id="tiles"></div>
+        </div>
+    </div>
+
+    <script src="script.js" async defer>
+
+    </script>
+</body>
+
+</html>
