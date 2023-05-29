@@ -1,0 +1,127 @@
+:root {
+    --tilesize: 25px;
+    --gridsize: 31px;
+}
+
+#pn {
+    color: blue;
+    font-size: 1.2em;
+}
+
+#introscreen {
+    background-color: white;
+    padding: 5px;
+}
+
+#gamecontainer {
+    display: none;
+    /* position: relative; */
+}
+
+#clearDB {
+    position: absolute;
+    bottom: 10px;
+    /* background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer; */
+}
+
+#gamescreen {
+    display: grid;
+    grid-template-columns: 100px 1fr 50px;
+    grid-template-rows: 50px 1fr 2em;
+    grid-template-areas:
+        "info hand hand"
+        "buttons gameboard gameboard"
+        "footer footer footer";
+    height: 98vh;
+    width: 98vw;
+    /* prevent text-highlighting */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+#gamechoice {
+    display: none;
+    grid-area: gameboard;
+}
+
+#hand {
+    display: flex;
+    grid-area: hand;
+    background-color: grey;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#buttons {
+    grid-area: buttons;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+}
+
+#buttons button {
+    margin: 5px;
+}
+
+#info {
+    grid-area: info;
+    background-color: lightgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#reset-game {}
+
+#board {
+    grid-area: gameboard;
+    background-color: black;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-image: url("gridbox.gif");
+    background-size: var(--gridsize);
+}
+
+#footer {
+    grid-area: footer;
+    background-color: lightyellow;
+}
+
+#dump {
+    background-color: yellow;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer {
+    display: flex;
+    align-items: end;
+}
+
+.tile {
+    height: var(--tilesize);
+    width: var(--tilesize);
+    font-size: calc(var(--tilesize) * 0.8);
+    background-color: rgb(207, 177, 138);
+    border: 1px solid rgb(177, 151, 118);
+    display: flex;
+    justify-content: center;
+    margin: 2px;
+}
+
+.tile-selected {
+    background-color: rgb(255, 255, 0);
+}
+
+.tile-new {
+    background-color: rgb(255, 0, 0);
+}
